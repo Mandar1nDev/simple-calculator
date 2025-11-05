@@ -31,6 +31,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        int test;
         Scanner scanner = new Scanner(System.in);    //Создание объектов, которые понадобяться дальше
         int menu;
         double number1;

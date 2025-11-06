@@ -39,7 +39,6 @@ public class Main {
         char operator;
         Main main = new Main();
         UI ui = new UI();
-
         ui.hello();              //Вызываем меню и берем нужную цифру
         menu = scanner.nextInt();
 

@@ -1,15 +1,19 @@
 import java.util.Scanner;
 
 public class Calculator {
-    Scanner scanner = new Scanner(System.in);
     int menu;
     double number1;
     double number2;
     char operator;
-    Main main = new Main();
-    UI ui = new UI();
-    History history = new History();
+    private Scanner scanner;
+    private UI ui;
+    private History history;
 
+    public Calculator(Scanner scanner, UI ui, History history) {
+        this.scanner = scanner;
+        this.ui = ui;
+        this.history = history;
+    }
     public void run(){
         ui.hello();
         menu = scanner.nextInt();
@@ -33,7 +37,7 @@ public class Calculator {
                 break;
             }
             if (s.equals("3")){
-                history.History();
+                history.runHistoryMenu();
                 continue;
             }
             System.out.println("Введите сначало число 1, потом число 2");       //Берем числа 1 и 2
@@ -68,7 +72,7 @@ public class Calculator {
                 System.out.println(s);
                 break;
             case('*'):  //Если умножение
-                s = number1 + " * " + number2 + " = " + (number1 + number2);
+                s = number1 + " * " + number2 + " = " + (number1 * number2);
                 history.add(s);
                 System.out.println(s);
                 break;
@@ -77,7 +81,7 @@ public class Calculator {
                     System.out.println("Делитель не может быть равен нулю");
                     break;
                 }
-                s = number1 + " / " + number2 + " / " + (number1 + number2);
+                s = number1 + " / " + number2 + " / " + (number1 / number2);
                 history.add(s);
                 System.out.println(s);
                 break;

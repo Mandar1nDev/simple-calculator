@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class UI{
     public void hello(){
         System.out.println("""
@@ -24,8 +27,9 @@ public class UI{
     public void wrongNumberFormat(){
         System.out.println("Ошибка: введен не правильный формат числа");
     }
-    public boolean isInvalidOperator(String operator){     //Проверка на то, есть ли в наличии один из операторов
-        if ("+-*/3exit".indexOf(operator) == -1){
+    public boolean isInvalidOperator(String operator){//Проверка на то, есть ли в наличии один из операторов
+        Set<String> set = Set.of("+","-","*","/","3","exit");
+        if (!(set.contains(operator))){
             System.out.println("Вы ввели неправильный оператор. Пожалуйста, введите один из предложенных");
             return true;
         }

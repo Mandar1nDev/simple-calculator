@@ -3,10 +3,13 @@ import java.util.Scanner;
 
 public class History{
     ArrayList<String> arrayList = new ArrayList<>();
-
-    public void History(){
-        UI ui = new UI();
-        Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+    private UI ui;
+    public History(Scanner scanner){
+        this.scanner = scanner;
+        this.ui = ui;
+    }
+    public void runHistoryMenu(){
         int menu;
         while (true){
             ui.historyMenu();

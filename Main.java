@@ -31,7 +31,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int test;
         Scanner scanner = new Scanner(System.in);    //Создание объектов, которые понадобяться дальше
         int menu;
         double number1;
@@ -39,7 +38,7 @@ public class Main {
         char operator;
         Main main = new Main();
         UI ui = new UI();
-
+        String someName;
         ui.hello();              //Вызываем меню и берем нужную цифру
         menu = scanner.nextInt();
 

@@ -1,36 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public boolean isInvalidOperator(char operator){     //Проверка на то, есть ли в наличии один из операторов
-        if ("+-*/".indexOf(operator) == -1){
-            System.out.println("Вы ввели неправильный оператор. Пожалуйста, введите один из предложенных");
-            return true;
-        }
-        return false;
-    }
-
-    public void  Calculator(char operator, double number1, double number2){ //Калькулятор
-        switch (operator){
-            case('+'):  //Если сложение
-                System.out.println(number1 + " + " + number2 + " = " + (number1 + number2));
-                break;
-            case('-'):  //Если вычитание
-                System.out.println(number1 + " - " + number2 + " = " + (number1 - number2));
-                break;
-            case('*'):  //Если умножение
-                System.out.println(number1 + " * " + number2 + " = " + (number1*number2));
-                break;
-            case('/'): //Если деление
-                if (number2 == 0){
-                    System.out.println("Делитель не может быть равен нулю");
-                    break;
-                }
-                System.out.println(number1 + " / " + number2 + " = " + (number1/number2));
-                break;
-        }
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);    //Создание объектов, которые понадобяться дальше
         int menu;
         double number1;
@@ -72,6 +43,34 @@ public class Main {
                 continue;
             }
             main.Calculator(operator, number1, number2);        //Передаём в метод Calculator класса Main
+        }
+    }
+    public boolean isInvalidOperator(char operator){     //Проверка на то, есть ли в наличии один из операторов
+        if ("+-*/".indexOf(operator) == -1){
+            System.out.println("Вы ввели неправильный оператор. Пожалуйста, введите один из предложенных");
+            return true;
+        }
+        return false;
+    }
+
+    public void  Calculator(char operator, double number1, double number2){ //Калькулятор
+        switch (operator){
+            case('+'):  //Если сложение
+                System.out.println(number1 + " + " + number2 + " = " + (number1 + number2));
+                break;
+            case('-'):  //Если вычитание
+                System.out.println(number1 + " - " + number2 + " = " + (number1 - number2));
+                break;
+            case('*'):  //Если умножение
+                System.out.println(number1 + " * " + number2 + " = " + (number1*number2));
+                break;
+            case('/'): //Если деление
+                if (number2 == 0){
+                    System.out.println("Делитель не может быть равен нулю");
+                    break;
+                }
+                System.out.println(number1 + " / " + number2 + " = " + (number1/number2));
+                break;
         }
     }
 }

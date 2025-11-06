@@ -8,6 +8,7 @@ public class Calculator {
     char operator;
     Main main = new Main();
     UI ui = new UI();
+    History history = new History();
 
     public void run(){
         ui.hello();
@@ -23,13 +24,18 @@ public class Calculator {
                 continue;
             }
             ui.choseOperator();   //Принимаем оператор
+
             String s = scanner.next();
+            if (ui.isInvalidOperator(s)) continue;      //Проверка есть ли такой оператор
+
             if (s.equals("exit")) {     //Если exit, то программа завершается
                 System.out.println("Завершаю программу");
                 break;
             }
-            operator = s.charAt(0);     //Берем первый символ строки
-            if (ui.isInvalidOperator(operator)) continue;      //Проверка есть ли такой оператор
+            if (s.equals("3")){
+                history.History();
+                continue;
+            }
             System.out.println("Введите сначало число 1, потом число 2");       //Берем числа 1 и 2
 
             try{                                    //Берем в try-catch, на случай если будет введён не double
@@ -42,28 +48,38 @@ public class Calculator {
                 ui.wrongNumberFormat();
                 continue;
             }
+            operator = s.charAt(0);     //Берем первый символ строки
             getTheResult(operator, number1, number2);//Передаём в метод Calculator класса Main
         }
         scanner.close();
     }
 
     public void  getTheResult(char operator, double number1, double number2){ //Калькулятор
+        String s;
         switch (operator){
             case('+'):  //Если сложение
-                System.out.println(number1 + " + " + number2 + " = " + (number1 + number2));
+                s = number1 + " + " + number2 + " = " + (number1 + number2);
+                history.add(s);
+                System.out.println(s);
                 break;
             case('-'):  //Если вычитание
-                System.out.println(number1 + " - " + number2 + " = " + (number1 - number2));
+                s = number1 + " - " + number2 + " = " + (number1 - number2);
+                history.add(s);
+                System.out.println(s);
                 break;
             case('*'):  //Если умножение
-                System.out.println(number1 + " * " + number2 + " = " + (number1*number2));
+                s = number1 + " * " + number2 + " = " + (number1 + number2);
+                history.add(s);
+                System.out.println(s);
                 break;
             case('/'): //Если деление
                 if (number2 == 0){
                     System.out.println("Делитель не может быть равен нулю");
                     break;
                 }
-                System.out.println(number1 + " / " + number2 + " = " + (number1/number2));
+                s = number1 + " / " + number2 + " / " + (number1 + number2);
+                history.add(s);
+                System.out.println(s);
                 break;
         }
     }
